@@ -1,92 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Your Service Page</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TheCodingBox</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
-      min-height: 100vh;
-    }
+  :root {
+    --blue-light: #3a8dde;
+    --blue-dark: #1e3a70;
+    --blue-mid: #2a5caa;
+    --white: #fff;
+  }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      padding-bottom: 80px;
-    }
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    user-select: none;
+  }
 
-    .hero {
-      text-align: center;
-      padding: 100px 0 60px 0; /* Extra top space */
-      color: white;
-      position: relative;
-    }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
 
-    .logo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 12em;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.08); /* light watermark */
-      font-family: 'Courier New', monospace;
-      z-index: 1;
-      pointer-events: none;
-      user-select: none;
-    }
+  .wheel-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin-bottom: 40px;
+  }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
+  .wheel {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    box-shadow: 0 0 25px rgba(58, 141, 222, 0.7);
+    position: relative;
+    overflow: visible;
+  }
 
-    .hero h1 {
-      font-size: 3.5em;
-      margin-bottom: 20px;
-      font-weight: 700;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
+  .wheel .slice {
+    --slice-count: 3;
+    --angle: calc(360deg / var(--slice-count));
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 0%;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    border-radius: 10px 0 0 0;
+    background: rgba(255 255 255 / 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 25px;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1.2rem;
+    box-shadow: inset 0 0 10px rgba(255 255 255 / 0.2);
+    user-select: none;
+  }
 
-    .hero p {
-      font-size: 1.3em;
-      margin-bottom: 40px;
-      opacity: 0.9;
-    }
+  /* Position each slice rotated */
+  .wheel .slice:nth-child(1) {
+    transform: rotate(calc(var(--angle) * 0)) translate(0, -100%);
+  }
+  .wheel .slice:nth-child(2) {
+    transform: rotate(calc(var(--angle) * 1)) translate(0, -100%);
+  }
+  .wheel .slice:nth-child(3) {
+    transform: rotate(calc(var(--angle) * 2)) translate(0, -100%);
+  }
 
-    .main-content {
-      background: white;
-      border-radius: 20px;
-      padding: 40px;
-      margin: 40px 0;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  .wheel .slice:hover {
+    background: rgba(255 255 255 / 0.4);
+    transform: scale(1.05) rotate(var(--angle)) translate(0, -100%);
+  }
+
+  /* Center circle */
+  .wheel-center {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: var(--blue-dark);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: 1.2px;
+    user-select: none;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .links a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: var(--blue-mid);
+    box-shadow: 0 0 8px rgba(58, 141, 222, 0.6);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .links a:hover,
+  .links a:focus {
+    background: var(--blue-light);
+    box-shadow: 0 0 12px rgba(58, 141, 222, 1);
+    outline: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 400px) {
+    .wheel-container {
+      width: 280px;
+      height: 280px;
     }
-  </style>
+    .wheel {
+      width: 280px;
+      height: 280px;
+    }
+    .wheel-center {
+      width: 100px;
+      height: 100px;
+      font-size: 1rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="hero">
-      <div class="logo">&lt;/&gt;</div>
-      <div class="hero-content">
-        <h1>Your Service Name</h1>
-        <p>Your tagline or mission statement goes here.</p>
-      </div>
-    </div>
 
-    <div class="main-content">
-      <p>This is your service content. No changes were made to your text, pricing, links, or layout.</p>
-    </div>
+<h1>TheCodingBox</h1>
+
+<div class="wheel-container" aria-label="Website navigation wheel" role="navigation">
+  <div class="wheel" role="list">
+    <a href="https://thecodingbox.github.io/GameForge/" target="_blank" rel="noopener noreferrer" class="slice" role="listitem" aria-label="GameForge website">
+      🎮 GameForge
+    </a>
+    <a href="https://thecodingbox.github.io/WebCraft/" target="_blank" rel="noopener noreferrer" class="slice" role="listitem" aria-label="WebCraft website">
+      🌐 WebCraft
+    </a>
+    <a href="https://thecodingbox.github.io/TaskBot/" target="_blank" rel="noopener noreferrer" class="slice" role="listitem" aria-label="TaskBot website">
+      🤖 TaskBot
+    </a>
   </div>
+  <div class="wheel-center" aria-hidden="true">TheCodingBox</div>
+</div>
+
+<div class="links" aria-label="Direct website links">
+  <a href="https://thecodingbox.github.io/GameForge/" target="_blank" rel="noopener noreferrer">🎮 GameForge</a>
+  <a href="https://thecodingbox.github.io/WebCraft/" target="_blank" rel="noopener noreferrer">🌐 WebCraft</a>
+  <a href="https://thecodingbox.github.io/TaskBot/" target="_blank" rel="noopener noreferrer">🤖 TaskBot</a>
+</div>
+
 </body>
 </html>
