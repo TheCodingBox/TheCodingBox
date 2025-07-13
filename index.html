@@ -2,184 +2,253 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TheCodingBox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>TheCodingBox - My Projects & Websites</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
-
-  :root {
-    --blue-light: #3a8dde;
-    --blue-dark: #1e3a70;
-    --blue-mid: #2a5caa;
-    --white: #fff;
-  }
-
-  body {
-    margin: 0;
-    background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
-    font-family: 'Inter', sans-serif;
-    color: var(--white);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    user-select: none;
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 40px;
-    letter-spacing: 2px;
-  }
-
-  .wheel-container {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    margin-bottom: 40px;
-  }
-
-  .wheel {
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    background: var(--blue-light);
-    box-shadow: 0 0 25px rgba(58, 141, 222, 0.7);
-    position: relative;
-    overflow: visible;
-  }
-
-  .wheel .slice {
-    --slice-count: 3;
-    --angle: calc(360deg / var(--slice-count));
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    top: 50%;
-    left: 50%;
-    transform-origin: 0% 0%;
-    cursor: pointer;
-    transition: transform 0.3s ease, background 0.3s ease;
-    border-radius: 10px 0 0 0;
-    background: rgba(255 255 255 / 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 25px;
-    color: var(--white);
-    font-weight: 600;
-    font-size: 1.2rem;
-    box-shadow: inset 0 0 10px rgba(255 255 255 / 0.2);
-    user-select: none;
-  }
-
-  /* Position each slice rotated */
-  .wheel .slice:nth-child(1) {
-    transform: rotate(calc(var(--angle) * 0)) translate(0, -100%);
-  }
-  .wheel .slice:nth-child(2) {
-    transform: rotate(calc(var(--angle) * 1)) translate(0, -100%);
-  }
-  .wheel .slice:nth-child(3) {
-    transform: rotate(calc(var(--angle) * 2)) translate(0, -100%);
-  }
-
-  .wheel .slice:hover {
-    background: rgba(255 255 255 / 0.4);
-    transform: scale(1.05) rotate(var(--angle)) translate(0, -100%);
-  }
-
-  /* Center circle */
-  .wheel-center {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    background: var(--blue-dark);
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--white);
-    letter-spacing: 1.2px;
-    user-select: none;
-  }
-
-  .links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-align: center;
-  }
-
-  .links a {
-    color: var(--white);
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    background: var(--blue-mid);
-    box-shadow: 0 0 8px rgba(58, 141, 222, 0.6);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .links a:hover,
-  .links a:focus {
-    background: var(--blue-light);
-    box-shadow: 0 0 12px rgba(58, 141, 222, 1);
-    outline: none;
-  }
-
-  /* Responsive */
-  @media (max-width: 400px) {
-    .wheel-container {
-      width: 280px;
-      height: 280px;
+    /* Reset & base */
+    * {
+        margin: 0; padding: 0; box-sizing: border-box;
     }
-    .wheel {
-      width: 280px;
-      height: 280px;
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #1e3a70 0%, #3a8dde 100%);
+        min-height: 100vh;
+        position: relative;
+        user-select: none;
     }
-    .wheel-center {
-      width: 100px;
-      height: 100px;
-      font-size: 1rem;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        padding-bottom: 80px;
     }
-  }
+
+    /* Hero */
+    .hero {
+        text-align: center;
+        padding: 60px 0;
+        color: white;
+        position: relative;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+    .logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12em;
+        font-weight: 300;
+        color: rgba(255 255 255 / 0.1);
+        font-family: 'Courier New', monospace;
+        z-index: 1;
+        pointer-events: none;
+        user-select: none;
+    }
+    .hero h1 {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero p {
+        font-size: 1.3em;
+        margin-bottom: 40px;
+        opacity: 0.9;
+    }
+
+    /* Cards grid */
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+    .project-card {
+        background: rgba(255 255 255 / 0.1);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        padding: 30px 25px;
+        color: white;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    }
+    .project-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+    .project-title {
+        font-size: 1.8em;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    .project-desc {
+        font-size: 1.1em;
+        margin-bottom: 25px;
+        opacity: 0.85;
+    }
+    .project-link {
+        margin-top: auto;
+        padding: 12px 28px;
+        background: #2a5caa;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        box-shadow: 0 8px 20px rgba(58,141,222,0.5);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-link:hover,
+    .project-link:focus {
+        background: #3a8dde;
+        box-shadow: 0 12px 30px rgba(58,141,222,0.8);
+        outline: none;
+    }
+
+    /* Footer social icons */
+    .bottom-social {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+    .bottom-social a {
+        color: white;
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        text-decoration: none;
+    }
+    .bottom-social a:hover {
+        background: rgba(0,0,0,0.7);
+        transform: translateY(-3px);
+    }
+    .bottom-social a[href*="youtube"]:hover {
+        color: #ff0000;
+    }
+    .bottom-social a[href*="steam"]:hover {
+        color: #1b2838;
+        background: #c7d5e0;
+    }
+    .bottom-social a[href*="github"]:hover {
+        color: #333;
+        background: white;
+    }
+    .bottom-social a[href*="mailto"]:hover {
+        color: #0078d4;
+        background: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.6em;
+        }
+        .hero p {
+            font-size: 1.1em;
+        }
+        .logo {
+            font-size: 8em;
+        }
+        .projects {
+            gap: 20px;
+        }
+        .project-card {
+            padding: 20px;
+        }
+    }
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 2em;
+        }
+        .hero p {
+            font-size: 1em;
+        }
+        .logo {
+            font-size: 6em;
+        }
+        .project-link {
+            padding: 10px 22px;
+        }
+    }
 </style>
 </head>
 <body>
+    <div class="container">
+        <div class="hero" role="banner">
+            <div class="logo" aria-hidden="true">&lt;/&gt;</div>
+            <div class="hero-content">
+                <h1>TheCodingBox</h1>
+                <p>Your development playground: GameForge, WebCraft &amp; TaskBot</p>
+            </div>
+        </div>
 
-<h1>TheCodingBox</h1>
+        <section class="projects" aria-label="My main projects and websites">
+            <article class="project-card" tabindex="0">
+                <div class="project-icon" aria-hidden="true">🎮</div>
+                <h2 class="project-title">GameForge</h2>
+                <p class="project-desc">Build and play games with my creative game development platform.</p>
+                <a href="https://thecodingbox.github.io/GameForge/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Visit GameForge website">Visit GameForge</a>
+            </article>
 
-<div class="wheel-container" aria-label="Website navigation wheel" role="navigation">
-  <div class="wheel" role="list">
-    <a href="https://thecodingbox.github.io/GameForge/" target="_blank" rel="noopener noreferrer" class="slice" role="listitem" aria-label="GameForge website">
-      🎮 GameForge
-    </a>
-    <a href="https://thecodingbox.github.io/WebCraft/" target="_blank" rel="noopener noreferrer" class="slice" role="listitem" aria-label="WebCraft website">
-      🌐 WebCraft
-    </a>
-    <a href="https://thecodingbox.github.io/TaskBot/" target="_blank" rel="noopener noreferrer" class="slice" role="listitem" aria-label="TaskBot website">
-      🤖 TaskBot
-    </a>
-  </div>
-  <div class="wheel-center" aria-hidden="true">TheCodingBox</div>
-</div>
+            <article class="project-card" tabindex="0">
+                <div class="project-icon" aria-hidden="true">🌐</div>
+                <h2 class="project-title">WebCraft</h2>
+                <p class="project-desc">Custom websites that actually convert visitors into customers.</p>
+                <a href="https://thecodingbox.github.io/WebCraft/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Visit WebCraft website">Visit WebCraft</a>
+            </article>
 
-<div class="links" aria-label="Direct website links">
-  <a href="https://thecodingbox.github.io/GameForge/" target="_blank" rel="noopener noreferrer">🎮 GameForge</a>
-  <a href="https://thecodingbox.github.io/WebCraft/" target="_blank" rel="noopener noreferrer">🌐 WebCraft</a>
-  <a href="https://thecodingbox.github.io/TaskBot/" target="_blank" rel="noopener noreferrer">🤖 TaskBot</a>
-</div>
+            <article class="project-card" tabindex="0">
+                <div class="project-icon" aria-hidden="true">🤖</div>
+                <h2 class="project-title">TaskBot</h2>
+                <p class="project-desc">Automate your tasks and workflows with powerful scripting bots.</p>
+                <a href="https://thecodingbox.github.io/TaskBot/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Visit TaskBot website">Visit TaskBot</a>
+            </article>
+        </section>
+    </div>
 
+    <div class="bottom-social" role="contentinfo" aria-label="Contact and social links">
+        <a href="mailto:TheCodingBox.dev@outlook.com" title="Email Support" aria-label="Email Support">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+        </a>
+        <a href="https://www.youtube.com/@TheCodingBox-m8v" target="_blank" title="YouTube" aria-label="YouTube">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+        </a>
+        <a href="https://steamcommunity.com/id/TheCodingBox" target="_blank" title="Steam" aria-label="Steam">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.634 20.183 6.491 24 11.979 24c6.624 0 11.979-5.354 11.979-11.979C23.958 5.354 18.603.001 11.979.001zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.317.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.252 0-2.265-1.014-2.265-2.265z"/>
+            </svg>
+        </a>
+        <a href="https://github.com/TheCodingBox" target="_blank" title="GitHub" aria-label="GitHub">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+        </a>
+    </div>
 </body>
 </html>
