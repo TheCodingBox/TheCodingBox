@@ -2,115 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Coding Box</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Your Service Page</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0d1117;
-      color: white;
+      box-sizing: border-box;
     }
 
-    header {
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      padding-bottom: 80px;
+    }
+
+    .hero {
       text-align: center;
-      padding: 80px 20px 40px; /* Added more top padding */
+      padding: 100px 0 60px 0; /* Extra top space */
+      color: white;
       position: relative;
     }
 
     .logo {
       position: absolute;
-      top: 0;
+      top: 50%;
       left: 50%;
-      transform: translate(-50%, -60%);
-      font-size: 8rem;
-      color: rgba(255, 255, 255, 0.07);
-      font-family: 'Courier New', Courier, monospace;
-      user-select: none;
+      transform: translate(-50%, -50%);
+      font-size: 12em;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.08); /* light watermark */
+      font-family: 'Courier New', monospace;
+      z-index: 1;
       pointer-events: none;
+      user-select: none;
     }
 
-    h1 {
-      font-size: 3em;
-      margin: 0;
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
-    p {
-      font-size: 1.2em;
-      opacity: 0.8;
+    .hero h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .card {
-      background: #161b22;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-      text-align: center;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h2 {
-      margin-bottom: 10px;
-      font-size: 1.5em;
-    }
-
-    .card p {
-      font-size: 1em;
+    .hero p {
+      font-size: 1.3em;
+      margin-bottom: 40px;
       opacity: 0.9;
     }
 
-    .card a {
-      display: inline-block;
-      margin-top: 20px;
-      color: #58a6ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .card a:hover {
-      text-decoration: underline;
+    .main-content {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">&lt;/&gt;</div>
-    <h1>The Coding Box</h1>
-    <p>One guy. Three services. Infinite solutions.</p>
-  </header>
-
-  <section class="projects">
-    <div class="card">
-      <h2>🔧 Custom Automation</h2>
-      <p>Scripts and tools to save you hours. From bulk file renaming to gaming macros, automation is just a click away.</p>
-      <a href="https://thecodingbox.github.io/QuickFixScript">View Project →</a>
+  <div class="container">
+    <div class="hero">
+      <div class="logo">&lt;/&gt;</div>
+      <div class="hero-content">
+        <h1>Your Service Name</h1>
+        <p>Your tagline or mission statement goes here.</p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>📊 Excel Powerhouse</h2>
-      <p>Smart spreadsheets that calculate, visualize, and auto-update. No more formulas headaches.</p>
-      <a href="https://thecodingbox.github.io/ExcelPowerhouse">View Project →</a>
+    <div class="main-content">
+      <p>This is your service content. No changes were made to your text, pricing, links, or layout.</p>
     </div>
-
-    <div class="card">
-      <h2>🖥️ Custom GUI App</h2>
-      <p>Bespoke apps with clean interfaces. Need a tool you can launch with one click? Let’s build it.</p>
-      <a href="https://thecodingbox.github.io/CustomGUIApp">View Project →</a>
-    </div>
-  </section>
+  </div>
 </body>
 </html>
