@@ -1,203 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheCodingBox - Your Development Hub</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Coding Box</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0d1117;
+      color: white;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            min-height: 100vh;
-            padding: 20px;
-        }
+    header {
+      text-align: center;
+      padding: 80px 20px 40px; /* Added more top padding */
+      position: relative;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
+    .logo {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      font-size: 8rem;
+      color: rgba(255, 255, 255, 0.07);
+      font-family: 'Courier New', Courier, monospace;
+      user-select: none;
+      pointer-events: none;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
 
-        .logo {
-            font-size: 3.5em;
-            font-weight: bold;
-            background: linear-gradient(45deg, #fff, #e3f2fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    p {
+      font-size: 1.2em;
+      opacity: 0.8;
+    }
 
-        .tagline {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        .featured-services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin: 60px 0;
-        }
+    .card {
+      background: #161b22;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 30px 20px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
 
-        .feature-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
+    .card p {
+      font-size: 1em;
+      opacity: 0.9;
+    }
 
-        .feature-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    .card a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #58a6ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        .feature-desc {
-            font-size: 1em;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .quick-links, .cta-section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 50px 0;
-            text-align: center;
-        }
-
-        .quick-links h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .link-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .link-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .link-icon {
-            font-size: 1.5em;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #81c784, #66bb6a);
-            color: white;
-            padding: 20px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(129, 199, 132, 0.3);
-            margin: 10px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(129, 199, 132, 0.4);
-        }
-    </style>
+    .card a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 class="logo">TheCodingBox</h1>
-            <p class="tagline">Your All-in-One Hub for Web, Game, and Automation Projects</p>
-        </div>
+  <header>
+    <div class="logo">&lt;/&gt;</div>
+    <h1>The Coding Box</h1>
+    <p>One guy. Three services. Infinite solutions.</p>
+  </header>
 
-        <div class="featured-services">
-            <a href="https://thecodingbox.github.io/Custom-Automation-Service/" target="_blank" class="feature-card">
-                <div class="feature-icon">⚙️</div>
-                <div class="feature-title">Custom Automation</div>
-                <p class="feature-desc">Boost productivity with scripts and GUIs that do your work for you.</p>
-            </a>
-            <a href="https://thecodingbox.github.io/WebCraft/" target="_blank" class="feature-card">
-                <div class="feature-icon">🌐</div>
-                <div class="feature-title">WebCraft</div>
-                <p class="feature-desc">Sleek, modern, and mobile-friendly websites tailored to your needs.</p>
-            </a>
-            <a href="https://thecodingbox.github.io/GameForge/" target="_blank" class="feature-card">
-                <div class="feature-icon">🎮</div>
-                <div class="feature-title">GameForge</div>
-                <p class="feature-desc">Games made in Unity & Python - from idea to Steam-ready.</p>
-            </a>
-        </div>
-
-        <div class="quick-links">
-            <h3>🔗 Quick Links & Social</h3>
-            <div class="links-grid">
-                <a href="mailto:TheCodingBox.dev@outlook.com" class="link-item">
-                    <span class="link-icon">📧</span>
-                    <span>Email Support</span>
-                </a>
-                <a href="https://www.youtube.com/@TheCodingBox-m8v" target="_blank" class="link-item">
-                    <span class="link-icon">📺</span>
-                    <span>YouTube Channel</span>
-                </a>
-                <a href="https://steamcommunity.com/id/TheCodingBox" target="_blank" class="link-item">
-                    <span class="link-icon">🎮</span>
-                    <span>Steam Profile</span>
-                </a>
-                <a href="https://github.com/TheCodingBox" target="_blank" class="link-item">
-                    <span class="link-icon">💻</span>
-                    <span>GitHub Projects</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="cta-section">
-            <h2>Ready to Build Something?</h2>
-            <p style="margin-bottom: 30px; font-size: 1.1em;">Let’s create tools, websites, and games that stand out.</p>
-            <a href="mailto:TheCodingBox.dev@outlook.com" class="cta-button">Contact Me</a>
-        </div>
+  <section class="projects">
+    <div class="card">
+      <h2>🔧 Custom Automation</h2>
+      <p>Scripts and tools to save you hours. From bulk file renaming to gaming macros, automation is just a click away.</p>
+      <a href="https://thecodingbox.github.io/QuickFixScript">View Project →</a>
     </div>
+
+    <div class="card">
+      <h2>📊 Excel Powerhouse</h2>
+      <p>Smart spreadsheets that calculate, visualize, and auto-update. No more formulas headaches.</p>
+      <a href="https://thecodingbox.github.io/ExcelPowerhouse">View Project →</a>
+    </div>
+
+    <div class="card">
+      <h2>🖥️ Custom GUI App</h2>
+      <p>Bespoke apps with clean interfaces. Need a tool you can launch with one click? Let’s build it.</p>
+      <a href="https://thecodingbox.github.io/CustomGUIApp">View Project →</a>
+    </div>
+  </section>
 </body>
 </html>
